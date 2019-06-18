@@ -19,25 +19,25 @@ String converter(uint8_t *str) {
 
 void cb(esppl_frame_info *info) {
 
+  if (info->rssi > -35) {
+    Serial.print("sourceaddr:" );
+    Serial.println( mac2String(info->sourceaddr));
+    Serial.print("receiveraddr:" );
+    Serial.println( mac2String(info->receiveraddr));
+    Serial.print("destinationaddr:" );
+    Serial.println( mac2String(info->destinationaddr));
+    Serial.print("transmitteraddr:" );
+    Serial.println( mac2String(info->transmitteraddr));
+    Serial.print("rssi:" );
+    Serial.println( (info->rssi));
+    Serial.print("ssid:" );
+    Serial.println( converter(info->ssid));
+    Serial.print("bssid:" );
+    Serial.println( converter(info->bssid));
+    Serial.println();
+    Serial.println();
 
-  Serial.print("sourceaddr:" );
-  Serial.println( mac2String(info->sourceaddr));
-  Serial.print("receiveraddr:" );
-  Serial.println( mac2String(info->receiveraddr));
-  Serial.print("destinationaddr:" );
-  Serial.println( mac2String(info->destinationaddr));
-  Serial.print("transmitteraddr:" );
-  Serial.println( mac2String(info->transmitteraddr));
-  Serial.print("rssi:" );
-  Serial.println( (info->rssi));
-  Serial.print("ssid:" );
-  Serial.println( converter(info->ssid));
-  Serial.print("bssid:" );
-  Serial.println( converter(info->bssid));
-  Serial.println();
-  Serial.println();
-
-
+  }
 }
 
 
